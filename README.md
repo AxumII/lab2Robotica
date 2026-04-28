@@ -35,6 +35,23 @@ Manipulador Motoman MH6.
 | **Repetibilidad** | ±0.03 mm | ±0.08 mm |
 
 ## Descripcion de configuraciones Home
+### 1. Home 1 (Absolute Home)
+* **Posición de las articulaciones:** Todos los ejes se encuentran exactamente a NO SE ; TOCA AVERIGUAR BIEN 
+  * **S (Base):** °
+  * **L (Brazo inferior):** °
+  * **U (Brazo superior):** °
+  * **R (Giro de muñeca):** °
+  * **B (Inclinación de muñeca):** °
+  * **T (Giro de la herramienta):** °
+* **Descripción:** En esta configuración, el brazo adquiere su postura de calibración de fábrica. Físicamente, todas las marcas de alineación (flechas o muescas en el chasis de cada articulación) coinciden de manera perfecta.
+* **Propósito:** Es una posición estricta de mantenimiento. Se utiliza exclusivamente para calibrar el robot, registrar los ceros absolutos de los motores y restablecer el sistema tras una pérdida de memoria (como una alarma *Out of Range*).
+
+### 2. Home 2 (Work Home / Posición de Reposo o Trabajo)
+* **Posición de las articulaciones:** A diferencia del Home 1, esta es una configuración **definida por el usuario** mediante programación, por lo que los ángulos varían según el diseño de la celda de trabajo. Típicamente, el brazo adopta una postura "plegada" sobre sí mismo (por ejemplo, con el eje L inclinado ligeramente, el eje U cerrado hacia abajo y la muñeca orientada al suelo para proteger la herramienta) aunque depende del entorno diseñado para el robot y las necesidades del usuario.
+* **Descripción:** Es la postura segura de inicio, fin de ciclo y espera. El manipulador se retrae a un espacio predefinido donde no interfiere con el proceso.
+* **Propósito:** Es el punto de partida seguro para ejecutar trayectorias automáticas y la posición de resguardo cuando el robot está inactivo.
+
+
 
 
 ## Modos de movimiento manuales
