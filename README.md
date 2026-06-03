@@ -1,7 +1,9 @@
-
-
 # Lab02 - Robótica Industrial - Analisis y Operaci´on del
 Manipulador Motoman MH6.
+<p align="center">
+  <img src="./media/WhatsApp%20Image%202026-05-22%20at%206.32.42%20PM (3).jpeg" alt="Motoman" width="60%">
+</p>
+
 
 # Integrantes
 
@@ -22,7 +24,7 @@ Manipulador Motoman MH6.
 8. [Código de RoboDK con trayectoria polar](#código-de-robodk-con-trayectoria-polar)
 9. [Video de simulación de RoboDK](#video-de-simulación-de-robodk)
 
-## Cuadro Comparativo: Brazo v1 vs. Brazo v2
+## Cuadro Comparativo: ABB IRB140 vs Motoman MH6
 
 | Categoría | ABB IRB140 | Motoman MH6 |
 | :--- | :--- | :--- |
@@ -36,23 +38,29 @@ Manipulador Motoman MH6.
 
 ## Descripcion de configuraciones Home
 ### 1. Home 1 (Absolute Home)
-* **Posición de las articulaciones:** Todos los ejes se encuentran exactamente a NO SE ; TOCA AVERIGUAR BIEN 
-  * **S (Base):** °
-  * **L (Brazo inferior):** °
-  * **U (Brazo superior):** °
-  * **R (Giro de muñeca):** °
-  * **B (Inclinación de muñeca):** °
-  * **T (Giro de la herramienta):** °
+* **Posición de las articulaciones:** Todos los ejes se encuentran exactamente a 0° (posición de calibración y alineación de marcas físicas).
+  * **S (Base):** 0°
+  * **L (Brazo inferior):** 0°
+  * **U (Brazo superior):** 0°
+  * **R (Giro de muñeca):** 0°
+  * **B (Inclinación de muñeca):** 0°
+  * **T (Giro de la herramienta):** 0°
 * **Descripción:** En esta configuración, el brazo adquiere su postura de calibración de fábrica. Físicamente, todas las marcas de alineación (flechas o muescas en el chasis de cada articulación) coinciden de manera perfecta.
 * **Propósito:** Es una posición estricta de mantenimiento. Se utiliza exclusivamente para calibrar el robot, registrar los ceros absolutos de los motores y restablecer el sistema tras una pérdida de memoria (como una alarma *Out of Range*).
+
+<p align="center">
+  <img src="./media/WhatsApp%20Image%202026-05-22%20at%206.32.42%20PM (2).jpeg" alt="Pantalla de configuración Home Position en el Teach Pendant DX100" width="60%">
+</p>
+
 
 ### 2. Home 2 (Work Home / Posición de Reposo o Trabajo)
 * **Posición de las articulaciones:** A diferencia del Home 1, esta es una configuración **definida por el usuario** mediante programación, por lo que los ángulos varían según el diseño de la celda de trabajo. Típicamente, el brazo adopta una postura "plegada" sobre sí mismo (por ejemplo, con el eje L inclinado ligeramente, el eje U cerrado hacia abajo y la muñeca orientada al suelo para proteger la herramienta) aunque depende del entorno diseñado para el robot y las necesidades del usuario.
 * **Descripción:** Es la postura segura de inicio, fin de ciclo y espera. El manipulador se retrae a un espacio predefinido donde no interfiere con el proceso.
 * **Propósito:** Es el punto de partida seguro para ejecutar trayectorias automáticas y la posición de resguardo cuando el robot está inactivo.
 
-
-
+<p align="center">
+  <img src="./media/WhatsApp%20Image%202026-05-22%20at%206.32.42%20PM.jpeg" alt="Pantalla de configuración Second Home Position en el Teach Pendant DX100" width="60%">
+</p>
 
 ## Modos de movimiento manuales
 La operación manual del manipulador Motoman MH6 a través del Teach Pendant DX100 se divide fundamentalmente en dos tipos de movimiento: **Articular (Joint)** y **por Coordenadas (Cartesiano/Interpolado)**.
@@ -82,9 +90,7 @@ Por seguridad y precisión durante el modo de enseñanza (Teach Mode), el Teach 
 * **Medium (Media):** Velocidad estándar de operación manual.
 * **High (Alta):** Velocidad máxima permitida en modo manual (restringida por normativas de seguridad frente a la velocidad real de operación automática).
 
-
 ## Funcionalidades de RoboDK
-
 
 ## Cuadro Comparativo: RoboDK vs. RobotStudio
 
@@ -94,17 +100,20 @@ Por seguridad y precisión durante el modo de enseñanza (Teach Mode), el Teach 
 | **Lenguaje de Programación** | Basado en **Python**, C#, C++, y soporte para integración externa. | Basado en **RAPID** (lenguaje propietario de ABB). |
 | **Fidelidad de Simulación** | Simulación cinemática y geométrica de alta precisión. | Máxima fidelidad. Utiliza el "Virtual Controller" idéntico al del hardware real. |
 | **Programación Offline (OLP)** | Muy versátil; permite generar código para casi cualquier post-procesador. | Optimizado para ABB; permite la sincronización total entre la simulación y el controlador real. |
-| **Costo y Licencia** | Licencia comercial más asequible y opción de licencia perpetua aunque la universidad NO TIENE. | Modelo de suscripción premium; la universidad SI TIENE LICENSIA. |
-| **Curva de Aprendizaje** | **Baja/Media:** Interfaz intuitiva orientada a la facilidad de uso e integracion con herramientas del lenguaje a eleccion. | **Alta:** Entorno profesional muy denso y restrictivo pero segmentado con un lenguaje incomodo. |
-
-
+| **Costo y Licencia** | Licencia comercial más asequible y opción de licencia perpetua aunque la universidad NO TIENE. | Modelo de suscripción premium; la universidad SI TIENE LICENCIA. |
+| **Curva de Aprendizaje** | **Baja/Media:** Interfaz intuitiva orientada a la facilidad de uso e integración con herramientas del lenguaje a elección. | **Alta:** Entorno profesional muy denso y restrictivo pero segmentado con un lenguaje incómodo. |
+| **Post-procesadores y Flexibilidad** | **Muy Alta:** Permite modificar o crear post-procesadores fácilmente mediante scripts de Python para adaptar el código a formatos específicos (como los pulsos del controlador DX100 de Yaskawa). | **Baja (Fuera de ABB):** No genera código nativo ejecutable para controladores de otras marcas sin un ecosistema de conversión externo y complejo. |
+| **Integración de Componentes de Celda (Track/Tornos)** | Fácil importación de archivos CAD tridimensionales y sincronización directa con mecanismos externos estándar como ejes lineales adicionales (*tracks*). | Excelente sincronización de sistemas de movimiento avanzados (MultiMove), pero fuertemente optimizada para el hardware periférico de la marca ABB. |
+| **Concepto de Gemelo Digital** | Enfocado en la validación geométrica de trayectorias, alcances y evasión de colisiones espaciales mediante un entorno gráfico ágil. | Enfocado en el gemelo digital completo (lógica interna, tiempos de ciclo reales de escaneo, señales I/O idénticas y simulación de la física del controlador). |
+| **Optimización de Trayectorias complejas** | Excelente para conversión directa de trayectorias complejas de manufactura (impresión 3D, maquinado CNC por G-code o trayectorias polares analíticas) a código robótico. | Excelente para programación estructurada de lógica industrial compleja, paletizado avanzado y control cinemático de alta precisión nativo de la marca. |
 ### Análisis para el Laboratorio
 Dado qu
-##Diagrama de flujo
 
-##Plano de planta
+## Diagrama de flujo
 
-##Codigo de RoboDK con trayectoria polar
+## Plano de planta
 
-##Video de simulacion de RoboDK
+## Código de RoboDK con trayectoria polar
 
+## Video de simulación de RoboDK
+[Ver en YouTube: Tutorial Motoman MH6 DX100](https://youtu.be/DAqCGlMtjmA)
