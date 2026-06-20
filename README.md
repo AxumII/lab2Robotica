@@ -110,6 +110,70 @@ Por seguridad y precisión durante el modo de enseñanza (Teach Mode), el Teach 
 Dado qu
 
 ## Diagrama de flujo
+```mermaid
+flowchart TD
+
+    A[Inicio del programa] --> B[Importar librerías RoboDK, math y time]
+    B --> C[Esperar 2 segundos]
+
+    C --> D[Definir función obtener_trazos_letra]
+    D --> E[Definir función generar_posiciones_texto]
+
+    E --> F[Generar posiciones para JOSE LUIS]
+    F --> G[Generar posiciones para JAIRO DAVID]
+
+    G --> H[Conectar con RoboDK]
+    H --> I[Seleccionar robot]
+
+    I --> J{¿Robot válido?}
+
+    J -- No --> K[Mostrar error y finalizar]
+    J -- Sí --> L[Mostrar mensaje Robot conectado]
+
+    L --> M[Buscar Frame_from_Target1]
+    M --> N{¿Frame existe?}
+
+    N -- No --> O[Mostrar error y finalizar]
+    N -- Sí --> P[Asignar frame al robot]
+
+    P --> Q[Configurar velocidad y blending]
+
+    Q --> R[Definir parámetros de dibujo]
+    R --> S[Ir a posición Home]
+
+    S --> T[Mover robot a posición segura]
+    T --> U[Iniciar trayectoria polar]
+
+    U --> V[Calcular puntos polares]
+    V --> W[Mover robot siguiendo trayectoria]
+    W --> X{¿Quedan puntos?}
+
+    X -- Sí --> V
+    X -- No --> Y[Subir herramienta]
+
+    Y --> Z[Configurar parámetros de escritura]
+
+    Z --> AA[Ir al inicio del texto]
+
+    AA --> AB[Recorrer lista de posiciones]
+
+    AB --> AC{¿Punto es seguro?}
+
+    AC -- Sí --> AD[Levantar herramienta]
+    AC -- No --> AE[Bajar herramienta y dibujar]
+
+    AD --> AF{¿Quedan puntos?}
+    AE --> AF
+
+    AF -- Sí --> AB
+    AF -- No --> AG[Subir herramienta]
+
+    AG --> AH[Regresar a Home]
+
+    AH --> AI[Mostrar mensaje de finalización]
+
+    AI --> AJ[Fin]
+```
 
 ## Plano de planta
 
