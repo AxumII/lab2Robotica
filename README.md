@@ -16,15 +16,16 @@ Manipulador Motoman MH6.
 
 1. [Cuadro Comparativo: ABB IRB140 vs. Motoman MH6](#cuadro-comparativo-abb-irb140-vs-motoman-mh6)
 2. [Descripción de configuraciones Home](#descripción-de-configuraciones-home)
-4. [Inicialización del sistema](#inicialización-del-sistema)
-3. [Modos de movimiento manuales y control de velocidad](#modos-de-movimiento-manuales-y-control-de-velocidad)
-4. [Funcionalidades de RoboDK](#funcionalidades-de-robodk)
-5. [Cuadro Comparativo: RoboDk vs RobotStudio](#cuadro-comparativo-robodk-vs-robotstudio)
-6. [Diagrama de flujo](#diagrama-de-flujo)
-7. [Plano de planta](#plano-de-planta)
-8. [Código de RoboDK con trayectoria polar](#código-de-robodk-con-trayectoria-polar)
-9. [Video de simulación de RoboDK](#video-de-simulación-de-robodk)
-10. [Conclusiones] (#conclusiones)
+3. [Inicialización del sistema](#inicialización-del-sistema)
+4. [Modos de movimiento manuales y control de velocidad](#modos-de-movimiento-manuales-y-control-de-velocidad)
+5. [Funcionalidades de RoboDK](#funcionalidades-de-robodk)
+6. [Cuadro Comparativo: RoboDk vs RobotStudio](#cuadro-comparativo-robodk-vs-robotstudio)
+7. [Diagrama de flujo](#diagrama-de-flujo)
+8. [Plano de planta](#plano-de-planta)
+9. [Código de RoboDK con trayectoria polar](#código-de-robodk-con-trayectoria-polar)
+10. [Video de simulación de RoboDK](#video-de-simulación-de-robodk)
+
+11. [Conclusiones](#conclusiones)
 
 ## Cuadro Comparativo: ABB IRB140 vs Motoman MH6
 
